@@ -1,5 +1,6 @@
 package com.example.nybooks.presentation.books
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Observer
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nybooks.R
 import com.example.nybooks.data.model.Book
+import com.example.nybooks.presentation.details.BookDetailsActivity
 import kotlinx.android.synthetic.main.activity_books.*
 
 class BooksActivity : AppCompatActivity() {
@@ -29,7 +31,15 @@ class BooksActivity : AppCompatActivity() {
                     layoutManager =
                         LinearLayoutManager(this@BooksActivity, RecyclerView.VERTICAL, false)
                     setHasFixedSize(true)
-                    adapter = BooksAdapter(books)
+                    // Lamba function
+                    adapter = BooksAdapter(books) { book ->
+                        val intent: Intent = BookDetailsActivity.getStartIntent(
+                            this@BooksActivity,
+                            book.title,
+                            book.description
+                        )
+                        this@BooksActivity.startActivity(intent)
+                    }
                 }
             }
         })
