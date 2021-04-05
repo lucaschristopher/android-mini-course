@@ -10,14 +10,12 @@
         android:id="@+id/textTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#000"
         tools:text="Title" />
 
     <TextView
         android:id="@+id/textAuthor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#000"
         tools:text="Author" />
 
 </LinearLayout>
